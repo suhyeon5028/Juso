@@ -22,7 +22,17 @@
       function jusoPopup() {
         let jusoUrl = $("#juso-url").val();
         window.open(jusoUrl, "pop", "width=570, height=420");
+        // window.close();
       }
+
+      asnc function jusoCheck(){
+        let response = await fatch("/juso/check");
+        let responseParse = await response.text();
+        console.log(responseParse)
+        $("#roadFullAddr").val(responseParse);
+      }
+
+      setInterval(jusoCheck, 1000);
     </script>
   </body>
 </html>
